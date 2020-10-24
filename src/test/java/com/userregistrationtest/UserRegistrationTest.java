@@ -6,9 +6,9 @@ import org.junit.Test;
 public class UserRegistrationTest {
 
 	@Test
-	public void testMobileNumber_WhenProper_ShouldReturnTrue() {
+	public void testPassword8Chars_WhenProper_ShouldReturnTrue() {
 		UserRegistration validator = new UserRegistration();
-		boolean result = validator.validateMobileNumber("91-7896542310");
+		boolean result = validator.validatePassword("sivakuma1");
 		Assert.assertEquals(true, result);
 	}
 }

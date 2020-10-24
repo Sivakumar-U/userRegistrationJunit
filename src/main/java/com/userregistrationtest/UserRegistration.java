@@ -3,10 +3,10 @@ package com.userregistrationtest;
 import java.util.regex.Pattern;
 
 public class UserRegistration {
-	private static final String PASSWORD_PATTERN = "^(?=.*?[A-Z])(?=.*?[0-9])(?=.*[@$!%*#?&]).{8,}";
+	private static final String EMAIL_PATTERN = "^[a-z]{3,}[.\\w]*@[\\w]{3,}.[\\w]{2,3}[.a-z]*$";
 
-	public boolean validatePassword(String password) {
-		return Pattern.matches(PASSWORD_PATTERN, password);
+	public boolean validateEmail(String email) {
+		return Pattern.matches(EMAIL_PATTERN, email);
 	}
 
 }

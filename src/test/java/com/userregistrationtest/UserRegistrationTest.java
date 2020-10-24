@@ -6,9 +6,9 @@ import org.junit.Test;
 public class UserRegistrationTest {
 
 	@Test
-	public void testPassword8Chars_Should1UC1Numeric_WhenProper_ShouldReturnTrue() {
+	public void testPassword8Chars_Should1UC_1Numeric_1SpecialChar_WhenProper_ShouldReturnTrue() {
 		UserRegistration validator = new UserRegistration();
-		boolean result = validator.validatePassword("sivaKuma1");
+		boolean result = validator.validatePassword("sivaKuma@1");
 		Assert.assertEquals(true, result);
 	}
 }

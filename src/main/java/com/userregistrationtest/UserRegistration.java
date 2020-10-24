@@ -3,10 +3,10 @@ package com.userregistrationtest;
 import java.util.regex.Pattern;
 
 public class UserRegistration {
-	String LAST_NAME_PATTERN = "^[A-Z]{1}[a-z]{2,}$";
+	private static final String EMAIL_PATTERN = "^[a-z]{3,}[.\\w]*@[\\w]{3,}.[\\w]{2,3}[.a-z]*$";
 
-	public boolean validateLastName(String lname) {
-		return Pattern.matches(LAST_NAME_PATTERN, lname);
+	public boolean validateEmail(String email) {
+		return Pattern.matches(EMAIL_PATTERN, email);
 	}
 
 }

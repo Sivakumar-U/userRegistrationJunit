@@ -1,39 +1,120 @@
 package com.userregistrationtest;
 
-import java.util.Arrays;
-import java.util.Collection;
+import static org.junit.Assert.assertEquals;
 
-import org.junit.Assert;
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
 
-@RunWith(Parameterized.class)
 public class UserRegistrationTest {
-	private String arg;
-	private boolean expectedValidation;
+	UserRegistration user;
 
-	public UserRegistrationTest(String arg, boolean expectedValidation) {
-		this.arg = arg;
-		this.expectedValidation = expectedValidation;
+	@Before
+	public void UserRegistrationObjectCreation() {
+		user = new UserRegistration();
 	}
 
-	@Parameterized.Parameters
-	public static Collection<Object[]> email() {
-		Object[][] data1 = new Object[][] { { "abc@yahoo.com", true, }, { "abc.100@yahoo.com", true, },
-				{ "abc.100@abc.com.au", true }, { "abc.abc@gmail.co.in", true }, { "abc100@gmail.com", true },
-				{ "abc@gmail.com.com", true }, { "abc+100", false }, { "abc", false }, { "abc@.com.my", false },
-				{ "abc123@gmail.a", false }, { ".abc@abc.com", false }, { "abc()*@gmail.com", false },
-				{ "abc@%.com", false }, { "abc.@g.com", false }, { "abc@a.com.21a", false },
-				{ "abc@g.cim.au.au", false } };
-
-		return Arrays.asList(data1);
+	@After
+	public void nullObject() {
+		user = null;
 	}
 
 	@Test
-	public void testEmails_WhenProper_ShouldReturnTrue() {
-		UserRegistration userRegistration = new UserRegistration();
-		Boolean result = userRegistration.validateEmail(arg);
-		Assert.assertEquals(result, expectedValidation);
+	public void testFirstName_WhenProper_ShouldReturnTrue() {
+		try {
+			assertEquals(true, user.validateFirstName("Sivakumar"));
+		} catch (InvalidUserDetailsException ex) {
+			ex.printStackTrace();
+		}
 	}
+
+	@Test
+	public void testFirstName_WhenProper_ShouldReturnFalse() {
+		try {
+			assertEquals(true, user.validateFirstName("sivakumar"));
+		} catch (InvalidUserDetailsException ex) {
+			ex.printStackTrace();
+		}
+	}
+
+	@Test
+	public void testLastName_WhenProper_ShouldReturnTrue() {
+		try {
+			assertEquals(true, user.validateLastName("Upparapalli"));
+		} catch (InvalidUserDetailsException ex) {
+			ex.printStackTrace();
+		}
+
+	}
+
+	@Test
+	public void testLastName_WhenProper_ShouldReturnFalse() {
+		try {
+			assertEquals(true, user.validateLastName("upparapalli"));
+		} catch (InvalidUserDetailsException ex) {
+			ex.printStackTrace();
+		}
+
+	}
+
+	@Test
+	public void testEmail_WhenProper_ShouldReturnTrue() {
+		try {
+			assertEquals(true, user.validateEmail("abc@gmail.com"));
+		} catch (InvalidUserDetailsException ex) {
+			ex.printStackTrace();
+		}
+
+	}
+
+	@Test
+	public void testEmail_WhenProper_ShouldReturnFalse() {
+		try {
+			assertEquals(true, user.validateEmail("abc.123.oi@gmail.com"));
+		} catch (InvalidUserDetailsException ex) {
+			ex.printStackTrace();
+		}
+
+	}
+
+	@Test
+	public void testMobileNumber_WhenProper_ShouldReturnTrue() {
+		try {
+			assertEquals(true, user.validateMobileNumber("91-9177258790"));
+		} catch (InvalidUserDetailsException ex) {
+			ex.printStackTrace();
+		}
+
+	}
+
+	@Test
+	public void testMobileNumber_WhenProper_ShouldReturnFalse() {
+		try {
+			assertEquals(true, user.validateMobileNumber("91 7995840125"));
+		} catch (InvalidUserDetailsException ex) {
+			ex.printStackTrace();
+		}
+
+	}
+
+	@Test
+	public void testPassword_WhenProper_ShouldReturnTrue() {
+		try {
+			assertEquals(true, user.validatePassword("Sivakum@1"));
+		} catch (InvalidUserDetailsException ex) {
+			ex.printStackTrace();
+		}
+
+	}
+
+	@Test
+	public void testPassword_WhenProper_ShouldReturnFalse() {
+		try {
+			assertEquals(true, user.validatePassword("sivakum1"));
+		} catch (InvalidUserDetailsException ex) {
+			ex.printStackTrace();
+		}
+
+	}
+
 }

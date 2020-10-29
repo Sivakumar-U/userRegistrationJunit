@@ -1,48 +1,38 @@
 package com.userregistrationtest;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 
 public class UserRegistrationTest {
-	UserRegistration user;
-
-	@Before
-	public void UserRegistrationObjectCreation() {
-		user = new UserRegistration();
-	}
-
-	@After
-	public void nullObject() {
-		user = null;
-	}
 
 	@Test
 	public void testFirstName_WhenProper_ShouldReturnTrue() {
 		try {
-			assertEquals(true, user.validateFirstName("Sivakumar"));
+			UserRegistration validate = new UserRegistration();
+			assertTrue(validate.validateFirstName("Siva"));
 		} catch (InvalidUserDetailsException ex) {
-			ex.printStackTrace();
+			System.out.println(ex.getMessage());
 		}
 	}
 
 	@Test
 	public void testFirstName_WhenProper_ShouldReturnFalse() {
 		try {
-			assertEquals(true, user.validateFirstName("sivakumar"));
+			UserRegistration validate = new UserRegistration();
+			assertTrue(validate.validateFirstName("siva"));
 		} catch (InvalidUserDetailsException ex) {
-			ex.printStackTrace();
+			System.out.println(ex.getMessage());
 		}
 	}
 
 	@Test
 	public void testLastName_WhenProper_ShouldReturnTrue() {
 		try {
-			assertEquals(true, user.validateLastName("Upparapalli"));
+			UserRegistration validate = new UserRegistration();
+			assertTrue(validate.validateLastName("Upparapalli"));
 		} catch (InvalidUserDetailsException ex) {
-			ex.printStackTrace();
+			System.out.println(ex.getMessage());
 		}
 
 	}
@@ -50,29 +40,30 @@ public class UserRegistrationTest {
 	@Test
 	public void testLastName_WhenProper_ShouldReturnFalse() {
 		try {
-			assertEquals(true, user.validateLastName("upparapalli"));
+			UserRegistration validate = new UserRegistration();
+			assertTrue(validate.validateLastName("upparapalli"));
 		} catch (InvalidUserDetailsException ex) {
-			ex.printStackTrace();
+			System.out.println(ex.getMessage());
 		}
-
 	}
 
 	@Test
 	public void testEmail_WhenProper_ShouldReturnTrue() {
 		try {
-			assertEquals(true, user.validateEmail("abc@gmail.com"));
+			UserRegistration validate = new UserRegistration();
+			assertTrue(validate.validateEmail("abc.xyz@gmail.co.in"));
 		} catch (InvalidUserDetailsException ex) {
-			ex.printStackTrace();
+			System.out.println(ex.getMessage());
 		}
-
 	}
 
 	@Test
 	public void testEmail_WhenProper_ShouldReturnFalse() {
 		try {
-			assertEquals(true, user.validateEmail("abc.123.oi@gmail.com"));
+			UserRegistration validate = new UserRegistration();
+			assertTrue(validate.validateEmail("abc@gmail.com"));
 		} catch (InvalidUserDetailsException ex) {
-			ex.printStackTrace();
+			System.out.println(ex.getMessage());
 		}
 
 	}
@@ -80,9 +71,10 @@ public class UserRegistrationTest {
 	@Test
 	public void testMobileNumber_WhenProper_ShouldReturnTrue() {
 		try {
-			assertEquals(true, user.validateMobileNumber("91-9177258790"));
+			UserRegistration validate = new UserRegistration();
+			assertTrue(validate.validateMobileNumber("91-7896541230"));
 		} catch (InvalidUserDetailsException ex) {
-			ex.printStackTrace();
+			System.out.println(ex.getMessage());
 		}
 
 	}
@@ -90,9 +82,10 @@ public class UserRegistrationTest {
 	@Test
 	public void testMobileNumber_WhenProper_ShouldReturnFalse() {
 		try {
-			assertEquals(true, user.validateMobileNumber("91 7995840125"));
+			UserRegistration validate = new UserRegistration();
+			assertTrue(validate.validateMobileNumber("7896541230"));
 		} catch (InvalidUserDetailsException ex) {
-			ex.printStackTrace();
+			System.out.println(ex.getMessage());
 		}
 
 	}
@@ -100,9 +93,10 @@ public class UserRegistrationTest {
 	@Test
 	public void testPassword_WhenProper_ShouldReturnTrue() {
 		try {
-			assertEquals(true, user.validatePassword("Sivakum@1"));
+			UserRegistration validate = new UserRegistration();
+			assertTrue(validate.validatePassword("Sivakum@1"));
 		} catch (InvalidUserDetailsException ex) {
-			ex.printStackTrace();
+			System.out.println(ex.getMessage());
 		}
 
 	}
@@ -110,11 +104,11 @@ public class UserRegistrationTest {
 	@Test
 	public void testPassword_WhenProper_ShouldReturnFalse() {
 		try {
-			assertEquals(true, user.validatePassword("sivakum1"));
+			UserRegistration validate = new UserRegistration();
+			assertTrue(validate.validatePassword("sivakuma1"));
 		} catch (InvalidUserDetailsException ex) {
-			ex.printStackTrace();
+			System.out.println(ex.getMessage());
 		}
-
 	}
 
 }
